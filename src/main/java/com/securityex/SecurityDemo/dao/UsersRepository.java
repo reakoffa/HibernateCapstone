@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.securityex.SecurityDemo.entity.Movies;
 
-public interface UsersRepository extends JpaRepository<Movies, Integer>{
+public interface UsersRepository extends JpaRepository<Student, Integer>{
 
-	Optional<Movies> findByName(String username);
+	Optional<Student> findByName(String username);
 	
 	Optional<Movies> findByLastName(String lastName);
 	
