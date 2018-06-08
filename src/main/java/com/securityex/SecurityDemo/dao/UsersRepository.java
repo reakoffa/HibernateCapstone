@@ -4,15 +4,16 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.securityex.SecurityDemo.entity.Movies;
+import com.securityex.SecurityDemo.entity.Course;
 
-public interface UsersRepository extends JpaRepository<Movies, Integer>{
+import com.securityex.SecurityDemo.entity.Student;
 
-	Optional<Movies> findByName(String username);
-	
-	Optional<Movies> findByLastName(String lastName);
-	
-	Optional<Movies> findByEmail(String email);
-	
-	
+public interface UsersRepository extends JpaRepository<Student, Integer> {
+
+	Optional<Student> findByName(String fname);
+
+	Optional<Student> findByLastName(String lastName);
+
+	Optional<Course> listAllStudents(Student student);
+
 }
