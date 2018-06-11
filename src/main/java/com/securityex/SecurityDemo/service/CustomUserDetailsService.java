@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.securityex.SecurityDemo.dao.UsersRepository;
 import com.securityex.SecurityDemo.entity.CustomUserDetails;
-import com.securityex.SecurityDemo.entity.Student;
+import com.securityex.SecurityDemo.entity.User;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<Student> o = usersRepository.findByName(username);
+		Optional<User> o = usersRepository.findByName(username);
 		
 		//this is similar to checking for aull value
 		o.orElseThrow(() -> new UsernameNotFoundException("Username not found"));

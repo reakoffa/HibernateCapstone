@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.securityex.SecurityDemo.dao.UsersRepository;
+import com.securityex.SecurityDemo.entity.Course;
+import com.securityex.SecurityDemo.entity.Student;
 
 @Controller
 public class HomeConteoller {
@@ -31,7 +33,7 @@ public class HomeConteoller {
 	}
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	@RequestMapping("/secured")
+	@RequestMapping("/admin")
 	public ModelAndView secured() {
 		return new ModelAndView("welcome");
 	}
@@ -49,14 +51,6 @@ public class HomeConteoller {
 		}
 		
 		return "redirect:/login?logout";
-	}
-	
-	@RequestMapping("/courselist")
-	public ModelAndView courselist() {
-		ModelAndView mv = new ModelAndView();
-		List<Course> courses = new ArrayList<>();
-		courses = uP.findAll();
-		return mv.addObject("courselist", courses);
 	}
 	
 	@RequestMapping("/enrollment")

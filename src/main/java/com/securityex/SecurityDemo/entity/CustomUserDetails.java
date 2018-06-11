@@ -8,10 +8,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
-public class CustomUserDetails extends Student implements UserDetails {
+public class CustomUserDetails extends User implements UserDetails {
 
 	//create a custom constructor for the copying constructor from users
-	public CustomUserDetails(final Student u) {
+	public CustomUserDetails(final User u) {
 		super();
 	}
 	
@@ -21,7 +21,7 @@ public class CustomUserDetails extends Student implements UserDetails {
 		//this will be for assigning the roles for authorization to certain pages
 		// using SimpleGrantedAuthority that is built into ApringSecurity using the stream api
 		
-		return getRole().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole())).collect(Collectors.toList());
+		return getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole())).collect(Collectors.toList());
 	}
 
 	@Override
